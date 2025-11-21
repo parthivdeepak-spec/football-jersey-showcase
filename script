@@ -1,0 +1,157 @@
+Explainer Script - Football Jersey Showcase Project
+ICT171 Assignment 3 - Cloud Server Deployment
+
+
+"Hello, my name is Parthiv, student ID 35859257, and this is my ICT171 Assignment 3 video explainer. Today, I'll walk you through how I deployed my Football Jersey Showcase website using Microsoft Azure Infrastructure as a Service, configured Apache web server on Ubuntu Linux, purchased and configured a domain name through GoDaddy, and linked everything together to create a live, accessible website."
+
+ Part 1: Azure Virtual Machine Setup (2-3 minutes)
+
+Setting Up the VM
+
+First, I'll show you how I created my virtual machine on Microsoft Azure.
+
+1. Logged into Azure Portal at portal.azure.com
+2. Created a new Virtual Machine with these specifications:
+   - VM Name: ict171-vm
+   - Region: UAE North (to minimize latency for my location)
+   - Operating System: Ubuntu Server 22.04 LTS
+   - Size: Standard B1s (suitable for a static website)
+   
+3. Configured Authentication: I set up SSH using password
+
+4. Network Configuration
+   - Created a new Virtual Network
+   - Configured Network Security Group to allow:
+     - SSH (port 22) for remote access
+     - HTTP (port 80) for web traffic
+     - HTTPS (port 443) for secure connections
+
+5. Public IP Address: Azure assigned me the static IP address **20.233.33.117**
+   - This IP will be linked to my domain name later"
+
+
+Now I'll demonstrate how I connected to my server and configured it.
+
+Step 1: SSH Connection
+bash
+ssh azureuser@20.233.33.117
+enter password
+
+Once connected, the first thing I did was update the system:
+
+sudo apt update
+sudo apt upgrade -y
+
+Step 2: Installing Apache Web Server
+
+Apache is the web server software that will serve my website to visitors:
+
+sudo apt install apache2 -y
+
+
+After installation, I started and enabled Apache:
+sudo systemctl start apache2
+sudo systemctl enable apache2
+
+
+I verified it was running:
+
+
+sudo systemctl status apache2
+
+At this point, if I visit my IP address 20.233.33.117 in a browser, I see the default Apache welcome page."
+
+Configuring the Firewall
+
+Step 3: Firewall Configuration
+
+For security, I configured UFW (Uncomplicated Firewall):
+
+sudo ufw allow OpenSSH
+sudo ufw allow 'Apache Full'
+sudo ufw enable
+sudo ufw status
+
+This allows only SSH and web traffic, blocking everything else."
+
+Deploying Website Files
+
+"**Step 4: Uploading Website Files**
+
+I created my HTML files locally, then transferred them to the server.
+
+First, I navigated to the web root directory:
+
+cd /var/www/html
+
+I removed the default Apache page:
+
+sudo rm index.html
+
+
+Then I uploaded my website files 
+
+
+Now when I visit 20.233.33.117, I see my Football Jersey Showcase website!"
+
+
+Part 3: Domain Name Configuration (3-4 minutes)
+
+Purchasing Domain from GoDaddy
+
+Step 1: Domain Purchase
+
+To make my website more accessible and professional, I purchased a domain name from GoDaddy.
+
+1. I went to GoDaddy.com
+2. Searched for available domain names related to my project
+3. Selected and purchased my domain ('parthiv.live')
+4. Completed the purchase process(costed around 8 aed)
+
+**Step 2: Linking Domain to Azure IP Address**
+
+This is where we connect the domain name to our Azure server's IP address using DNS configuration.
+
+In GoDaddy DNS Management:
+
+1. Logged into my GoDaddy account
+2. Navigated to My Products > Domains
+3. Clicked DNS next to my domain name
+4. Added/Modified DNS Records:
+
+A Record Configuration:
+- Type: A
+- Name: @ (this represents the root domain)
+- Value: 20.233.33.117 (my Azure server IP)
+- TTL: (default option)
+
+WWW Subdomain :
+- Type: A
+- Name: **www**
+- Value: 20.233.33.117
+- TTL: (default option)
+
+5. Saved all changes
+
+
+ Part 6: Testing and Verification (2 minutes)
+
+
+Test 1: Access by IP Address
+- Navigate to http://20.233.33.117
+- Website loads successfully
+
+Test 2: Access by Domain Name
+- Navigate to http://parthiv.live
+- Website loads successfully
+
+Test 4: Responsive Design
+- Test on different screen sizes
+- Mobile, tablet, desktop all working
+
+Test 5: Navigation
+- Test all menu links: Home, Gallery, About
+- All pages load correctly
+
+Test 6: Global Accessibility
+- Used online tools to verify site is accessible from different locations worldwide"
