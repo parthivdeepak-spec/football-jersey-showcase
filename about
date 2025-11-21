@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Football Jersey Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #500F66 0%, #8C1AFF 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            background: linear-gradient(135deg, #500F66 0%, #8C1AFF 100%);
+            color: white;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            background: white;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #500F66;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #8C1AFF;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: #500F66;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .section ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        /* Tech Stack Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, #500F66 0%, #8C1AFF 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .tech-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-card p {
+            color: #fff;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background: #f9f9f9;
+            border-left: 4px solid #500F66;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .info-box strong {
+            color: #500F66;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Project Info Table */
+        .project-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .project-table th,
+        .project-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .project-table th {
+            background: #500F66;
+            color: white;
+            font-weight: 600;
+        }
+
+        .project-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-info {
+            margin-bottom: 1rem;
+        }
+
+        .footer-info p {
+            margin: 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .project-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">⚽ Jersey Showcase</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>About This Project</h1>
+        <p>Learn about the Football Jersey Showcase Platform - its purpose, technical implementation, and the technologies behind it.</p>
+    </section>
+
+    <main>
+        <section class="section">
+            <h2>Project Overview</h2>
+            <p>The Football Jersey Showcase Platform is a comprehensive web application designed to celebrate and document the rich history and artistic evolution of football jerseys from clubs and national teams worldwide. This project serves as both an educational resource for football enthusiasts and a demonstration of cloud infrastructure deployment capabilities.</p>
+            
+            <p>Football jerseys are more than just sportswear - they represent cultural identity, historical moments, and design innovation. From the iconic yellow of Brazil to the red and black stripes of AC Milan, each jersey tells a unique story. This platform aims to preserve and share these stories with the global football community.</p>
+
+            <div class="info-box">
+                <strong>Project Purpose</strong>
+                <p>This website was developed as part of the ICT171 - Introduction to Server Environments and Architectures course at Murdoch University. The project demonstrates proficiency in cloud infrastructure deployment, Linux server administration, web development, and technical documentation.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Technical Implementation</h2>
+            
+            <h3>Infrastructure</h3>
+            <p>This website is deployed using <strong>Infrastructure as a Service (IaaS)</strong> on Microsoft Azure cloud platform. The deployment follows industry best practices for security, scalability, and reliability.</p>
+
+            <table class="project-table">
+                <tr>
+                    <th>Component</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td><strong>Cloud Provider</strong></td>
+                    <td>Microsoft Azure</td>
+                </tr>
+                <tr>
+                    <td><strong>Virtual Machine</strong></td>
+                    <td>ict171-vm (Ubuntu Server)</td>
+                </tr>
+                <tr>
+                    <td><strong>Location</strong></td>
+                    <td>UAE North Data Center</td>
+                </tr>
+                <tr>
+                    <td><strong>Public IP</strong></td>
+                    <td>20.233.33.117</td>
+                </tr>
+                <tr>
+                    <td><strong>Operating System</strong></td>
+                    <td>Ubuntu Linux</td>
+                </tr>
+                <tr>
+                    <td><strong>Web Server</strong></td>
+                    <td>Apache HTTP Server</td>
+                </tr>
+            </table>
+
+            <h3>Technology Stack</h3>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4>Frontend</h4>
+                    <p>HTML5, CSS3, and JavaScript for responsive, modern web design</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Web Server</h4>
+                    <p>Apache HTTP Server for reliable content delivery</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Cloud Platform</h4>
+                    <p>Microsoft Azure IaaS for scalable infrastructure</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Operating System</h4>
+                    <p>Ubuntu Linux for secure server environment</p>
+                </div>
+            </div>
+
+            <h3>Key Features</h3>
+            <ul>
+                <li><strong>Responsive Design:</strong> Fully optimized for desktop, tablet, and mobile devices</li>
+                <li><strong>Static Architecture:</strong> Fast loading times and enhanced security through static HTML/CSS/JS</li>
+                <li><strong>Clean Navigation:</strong> Intuitive menu system for easy browsing</li>
+                <li><strong>Visual Design:</strong> Jersey representations using CSS gradients and modern styling</li>
+                <li><strong>Comprehensive Coverage:</strong> Multiple sections covering different leagues and competitions</li>
+            </ul>
+
+            <h3>Security Measures</h3>
+            <ul>
+                <li>Firewall configuration (UFW) restricting unnecessary ports</li>
+                <li>Regular system updates and security patches</li>
+                <li>Proper file permissions and ownership</li>
+                <li>SSL/TLS encryption (HTTPS implementation)</li>
+                <li>Secure SSH access with key-based authentication</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Development Process</h2>
+            <p>The development of this platform followed a structured approach:</p>
+            
+            <div class="info-box">
+                <strong>Phase 1: Planning & Design</strong>
+                <p>Conceptualized the project scope, selected appropriate technologies, and designed the website architecture and visual style.</p>
+            </div>
+
+            <div class="info-box">
+                <strong>Phase 2: Infrastructure Setup</strong>
+                <p>Provisioned Azure virtual machine, configured Ubuntu Linux, installed and configured Apache web server, and implemented security measures.</p>
+            </div>
+
+            <div class="info-box">
+                <strong>Phase 3: Development</strong>
+                <p>Created HTML pages, designed CSS styling, implemented responsive layouts, and developed jersey visual representations.</p>
+            </div>
+
+            <div class="info-box">
+                <strong>Phase 4: Deployment</strong>
+                <p>Deployed website files to production server, configured DNS settings, tested accessibility, and implemented SSL/TLS certificates.</p>
+            </div>
+
+            <div class="info-box">
+                <strong>Phase 5: Documentation</strong>
+                <p>Created comprehensive technical documentation in GitHub, recorded video demonstration, and prepared final project report.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Project Information</h2>
+            <table class="project-table">
+                <tr>
+                    <th>Field</th>
+                    <th>Information</th>
+                </tr>
+                <tr>
+                    <td><strong>Student Name</strong></td>
+                    <td>Parthiv</td>
+                </tr>
+                <tr>
+                    <td><strong>Student ID</strong></td>
+                    <td>35859257</td>
+                </tr>
+                <tr>
+                    <td><strong>Unit Code</strong></td>
+                    <td>ICT171</td>
+                </tr>
+                <tr>
+                    <td><strong>Unit Name</strong></td>
+                    <td>Introduction to Server Environments and Architectures</td>
+                </tr>
+                <tr>
+                    <td><strong>Assignment</strong></td>
+                    <td>Assignment 3 - Cloud Server Project</td>
+                </tr>
+                <tr>
+                    <td><strong>Institution</strong></td>
+                    <td>Murdoch University</td>
+                </tr>
+                <tr>
+                    <td><strong>Year</strong></td>
+                    <td>2025</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Future Enhancements</h2>
+            <p>Potential improvements and features for future versions of this platform:</p>
+            <ul>
+                <li><strong>Database Integration:</strong> Implement MySQL or PostgreSQL for dynamic content management</li>
+                <li><strong>User Contributions:</strong> Allow users to submit their own jersey collections and stories</li>
+                <li><strong>Search Functionality:</strong> Add advanced search and filtering options</li>
+                <li><strong>Interactive Timeline:</strong> Visual timeline showing jersey evolution over decades</li>
+                <li><strong>Comparison Tool:</strong> Side-by-side jersey comparison feature</li>
+                <li><strong>API Integration:</strong> Connect with football statistics APIs for live data</li>
+                <li><strong>Multi-language Support:</strong> Internationalization for global audience</li>
+                <li><strong>Community Features:</strong> Forums, ratings, and discussion boards</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>License & Attribution</h2>
+            <p>This project is released under the <strong>MIT License</strong>, allowing for open collaboration and reuse.</p>
+            
+            <div class="info-box">
+                <strong>MIT License Summary</strong>
+                <p>Permission is granted to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, provided that the copyright notice and permission notice are included in all copies.</p>
+            </div>
+
+            <p><strong>Copyright © 2025 Parthiv</strong></p>
+        </section>
+
+        <section class="section">
+            <h2>Contact & Resources</h2>
+            <p><strong>GitHub Repository:</strong> [Repository URL will be added]</p>
+            <p><strong>Video Demonstration:</strong> [Video URL will be added]</p>
+            <p><strong>Documentation:</strong> Complete technical documentation available in the GitHub repository</p>
+            
+            <div class="info-box">
+                <strong>Acknowledgments</strong>
+                <p>This project was developed as part of the ICT171 coursework at Murdoch University. Special thanks to the course instructors and teaching staff for their guidance and support throughout this project.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-info">
+            <p><strong>Football Jersey Showcase Platform</strong></p>
+            <p>ICT171 Assignment 3 - Cloud Server Project</p>
+            <p>Student: Parthiv (ID: 35859257)</p>
+            <p>Server IP: 20.233.33.117</p>
+        </div>
+        <p>&copy; 2025 Football Jersey Showcase. Licensed under MIT License.</p>
+    </footer>
+</body>
+</html>
