@@ -1,0 +1,27 @@
+# Football Jersey Showcase - Cloud Server Project
+
+Student Name: Parthiv  
+Student ID: 35859257  
+Live URL: http://parthiv.live  
+Server IP: 20.233.33.117  
+Video Explainer:
+
+---
+
+Project Overview
+
+A comprehensive web platform celebrating iconic football jerseys from legendary clubs and international teams. This project demonstrates cloud infrastructure deployment, Linux server administration, and modern web development practices.
+
+Live Site:(http://parthiv.live)
+
+Overview
+
+Cloud Provider:** Microsoft Azure (IaaS)  
+Virtual Machine:** ict171-vm  
+Location:UAE North Data Center  
+Operating System:Ubuntu Linux  
+Web Server:Apache HTTP Server  
+Domain Registrar:GoDaddy.com
+Security: UFW Firewall, SSL/TLS 
+
+
