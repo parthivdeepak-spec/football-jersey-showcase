@@ -217,7 +217,7 @@ ICT171 Cloud Server Project - Football Jersey Showcase Platform
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">⚽ Jersey Showcase</a>
+            <a href="index.html" class="logo"> Jersey Showcase</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
@@ -400,15 +400,15 @@ ICT171 Cloud Server Project - Football Jersey Showcase Platform
             
             <div class="features">
                 <div class="feature-box">
-                    <h3>📚 Historical Archive</h3>
+                    <h3> Historical Archive</h3>
                     <p>Explore jerseys spanning multiple decades of football history</p>
                 </div>
                 <div class="feature-box">
-                    <h3>🎨 Design Analysis</h3>
+                    <h3> Design Analysis</h3>
                     <p>Understand the artistry and cultural significance behind each kit</p>
                 </div>
                 <div class="feature-box">
-                    <h3>🌍 Global Coverage</h3>
+                    <h3>Global Coverage</h3>
                     <p>Featuring clubs and national teams from around the world</p>
                 </div>
             </div>
