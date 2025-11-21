@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Football Jersey Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #500F66 0%, #8C1AFF 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            background: linear-gradient(135deg, #500F66 0%, #8C1AFF 100%);
+            color: white;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            background: white;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #500F66;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #8C1AFF;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: #500F66;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background: #8C1AFF;
+            transform: translateY(-2px);
+        }
+
+        /* Jersey Gallery Grid */
+        .jersey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .jersey-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #e0e0e0;
+        }
+
+        .jersey-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(80, 15, 102, 0.4);
+        }
+
+        /* Jersey Design Styles */
+        .jersey {
+            width: 100%;
+            height: 280px;
+            margin-bottom: 1rem;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .jersey::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 30px;
+            background: inherit;
+            border-radius: 0 0 50% 50%;
+            filter: brightness(0.9);
+        }
+
+        .jersey-collar {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 25px;
+            background: rgba(0,0,0,0.3);
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        }
+
+        .jersey-sleeve-left,
+        .jersey-sleeve-right {
+            position: absolute;
+            top: 30px;
+            width: 60px;
+            height: 100px;
+            filter: brightness(0.85);
+        }
+
+        .jersey-sleeve-left {
+            left: -20px;
+            transform: rotate(-10deg);
+            border-radius: 0 30px 30px 0;
+        }
+
+        .jersey-sleeve-right {
+            right: -20px;
+            transform: rotate(10deg);
+            border-radius: 30px 0 0 30px;
+        }
+
+        .jersey-sponsor {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .jersey-badge {
+            position: absolute;
+            top: 35px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .jersey-number {
+            position: absolute;
+            top: 140px;
+            right: 30px;
+            font-size: 4em;
+            font-weight: bold;
+            color: rgba(255,255,255,0.4);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 5;
+        }
+
+        .jersey-card h3 {
+            color: #500F66;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .jersey-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0.3rem 0;
+        }
+
+        .jersey-year {
+            background: #500F66;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-info {
+            margin-bottom: 1rem;
+        }
+
+        .footer-info p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">⚽ Jersey Showcase</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Complete Jersey Gallery</h1>
+        <p>Explore our comprehensive collection of iconic football jerseys from legendary clubs and national teams throughout history.</p>
+    </section>
+
+    <main>
+        <section class="section">
+            <h2>Premier League Classics</h2>
+            <div class="jersey-grid">
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #DC0000; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 2px solid #000;">
+                        <div style="font-size: 2.5em; font-weight: bold; color: #FFF;">MAN UTD</div>
+                    </div>
+                    <h3>Manchester United</h3>
+                    <p><strong>Season:</strong> 1998-99</p>
+                    <p><strong>Achievement:</strong> Treble Winners</p>
+                    <span class="jersey-year">1998-99</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #DC0714; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 2px solid #00A398;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF;">LFC</div>
+                    </div>
+                    <h3>Liverpool FC</h3>
+                    <p><strong>Season:</strong> 2004-05</p>
+                    <p><strong>Achievement:</strong> Champions League</p>
+                    <span class="jersey-year">2004-05</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #034694; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF;">CHELSEA</div>
+                    </div>
+                    <h3>Chelsea FC</h3>
+                    <p><strong>Season:</strong> 2011-12</p>
+                    <p><strong>Achievement:</strong> Champions League</p>
+                    <span class="jersey-year">2011-12</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #6CABDD; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 2.5em; font-weight: bold; color: #FFF;">MAN CITY</div>
+                    </div>
+                    <h3>Manchester City</h3>
+                    <p><strong>Season:</strong> 2022-23</p>
+                    <p><strong>Achievement:</strong> Treble Winners</p>
+                    <span class="jersey-year">2022-23</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #132257; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 2.5em; font-weight: bold; color: #FFF;">ARSENAL</div>
+                    </div>
+                    <h3>Arsenal FC</h3>
+                    <p><strong>Season:</strong> 2003-04</p>
+                    <p><strong>Achievement:</strong> The Invincibles</p>
+                    <span class="jersey-year">2003-04</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>La Liga Legends</h2>
+            <div class="jersey-grid">
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(90deg, #004D98 30%, #A50044 30% 70%, #FCBF49 70%); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF;">FCB</div>
+                    </div>
+                    <h3>FC Barcelona</h3>
+                    <p><strong>Season:</strong> 2014-15</p>
+                    <p><strong>Achievement:</strong> MSN Era Treble</p>
+                    <span class="jersey-year">2014-15</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #FFD700;">
+                        <div style="font-size: 3em; font-weight: bold; color: #00529F;">REAL</div>
+                    </div>
+                    <h3>Real Madrid</h3>
+                    <p><strong>Season:</strong> 2016-17</p>
+                    <p><strong>Achievement:</strong> La Duodécima</p>
+                    <span class="jersey-year">2016-17</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(180deg, #D71920 50%, #FFFFFF 50%); display: flex; align-items: center; justify-content: center; flex-direction: column; border: 2px solid #1B3F90;">
+                        <div style="font-size: 2.8em; font-weight: bold; color: #1B3F90; text-shadow: 1px 1px 2px #FFF;">ATLÉTICO</div>
+                    </div>
+                    <h3>Atlético Madrid</h3>
+                    <p><strong>Season:</strong> 2013-14</p>
+                    <p><strong>Achievement:</strong> La Liga Champions</p>
+                    <span class="jersey-year">2013-14</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Serie A Icons</h2>
+            <div class="jersey-grid">
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(180deg, #000000 50%, #FFFFFF 50%); display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #000;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF; text-shadow: 2px 2px 4px #000;">JUVE</div>
+                    </div>
+                    <h3>Juventus</h3>
+                    <p><strong>Season:</strong> 1995-96</p>
+                    <p><strong>Achievement:</strong> Champions League</p>
+                    <span class="jersey-year">1995-96</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(180deg, #FB090B 50%, #000000 50%); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF; text-shadow: 2px 2px 4px #000;">MILAN</div>
+                    </div>
+                    <h3>AC Milan</h3>
+                    <p><strong>Season:</strong> 2002-03</p>
+                    <p><strong>Achievement:</strong> Champions League</p>
+                    <span class="jersey-year">2002-03</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(180deg, #0068A8 50%, #000000 50%); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF;">INTER</div>
+                    </div>
+                    <h3>Inter Milan</h3>
+                    <p><strong>Season:</strong> 2009-10</p>
+                    <p><strong>Achievement:</strong> Treble Winners</p>
+                    <span class="jersey-year">2009-10</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #75B2DD; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF;">LAZIO</div>
+                    </div>
+                    <h3>SS Lazio</h3>
+                    <p><strong>Season:</strong> 1999-2000</p>
+                    <p><strong>Achievement:</strong> Scudetto Winners</p>
+                    <span class="jersey-year">1999-2000</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Bundesliga Greats</h2>
+            <div class="jersey-grid">
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #DC052D; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 2.5em; font-weight: bold; color: #FFF;">BAYERN</div>
+                    </div>
+                    <h3>Bayern Munich</h3>
+                    <p><strong>Season:</strong> 2019-20</p>
+                    <p><strong>Achievement:</strong> Treble Winners</p>
+                    <span class="jersey-year">2019-20</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #FDE100; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #000;">
+                        <div style="font-size: 2.5em; font-weight: bold; color: #000;">DORTMUND</div>
+                    </div>
+                    <h3>Borussia Dortmund</h3>
+                    <p><strong>Season:</strong> 2012-13</p>
+                    <p><strong>Achievement:</strong> Champions League Finalist</p>
+                    <span class="jersey-year">2012-13</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Other European Legends</h2>
+            <div class="jersey-grid">
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(180deg, #FFFFFF 50%, #FF0000 50%); display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #333;">
+                        <div style="font-size: 3em; font-weight: bold; color: #000;">AJAX</div>
+                    </div>
+                    <h3>AFC Ajax</h3>
+                    <p><strong>Season:</strong> 1994-95</p>
+                    <p><strong>Achievement:</strong> Champions League</p>
+                    <span class="jersey-year">1994-95</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #CE1141; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 2.8em; font-weight: bold; color: #FFF;">BENFICA</div>
+                    </div>
+                    <h3>SL Benfica</h3>
+                    <p><strong>Season:</strong> 1960-61</p>
+                    <p><strong>Achievement:</strong> European Cup</p>
+                    <span class="jersey-year">1960-61</span>
+                </div>
+
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #004170; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF;">PORTO</div>
+                    </div>
+                    <h3>FC Porto</h3>
+                    <p><strong>Season:</strong> 2003-04</p>
+                    <p><strong>Achievement:</strong> Champions League</p>
+                    <span class="jersey-year">2003-04</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-info">
+            <p><strong>Football Jersey Showcase Platform</strong></p>
+            <p>ICT171 Assignment 3 - Cloud Server Project</p>
+            <p>Student: Parthiv (ID: 35859257)</p>
+            <p>Server IP: 20.233.33.117</p>
+        </div>
+        <p>&copy; 2025 Football Jersey Showcase. Licensed under MIT License.</p>
+    </footer>
+</body>
+</html>
