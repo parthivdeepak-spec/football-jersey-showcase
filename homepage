@@ -1,0 +1,435 @@
+# football-jersey-showcase
+ICT171 Cloud Server Project - Football Jersey Showcase Platform
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Jersey Showcase | Iconic Kits Through History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #500F66 0%, #8C1AFF 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            background: linear-gradient(135deg, #500F66 0%, #8C1AFF 100%);
+            color: white;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            background: white;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #500F66;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #8C1AFF;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Jersey Gallery Grid */
+        .jersey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .jersey-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #e0e0e0;
+        }
+
+        .jersey-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(80, 15, 102, 0.3);
+        }
+
+        .jersey-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #500F66 0%, #8C1AFF 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .jersey-card h3 {
+            color: #500F66;
+            margin-bottom: 0.5rem;
+        }
+
+        .jersey-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, #500F66 0%, #8C1AFF 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-info {
+            margin-bottom: 1rem;
+        }
+
+        .footer-info p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">⚽ Jersey Showcase</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Football Jersey Showcase</h1>
+        <p>Celebrating iconic football kits from clubs and national teams worldwide. Explore the history, design, and cultural significance of football jerseys through the decades.</p>
+    </section>
+
+    <main>
+        <section class="section">
+            <h2>Iconic Club Jerseys</h2>
+            <div class="jersey-grid">
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(180deg, #FFFFFF 50%, #FF0000 50%); display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #333;">
+                        <div style="font-size: 3em; font-weight: bold; color: #000;">AFC</div>
+                        <div style="font-size: 1.5em; font-weight: bold; color: #000;">AJAX</div>
+                    </div>
+                    <h3>AFC Ajax</h3>
+                    <p><strong>Season:</strong> 1994-95<br>
+                    <strong>Manufacturer:</strong> Umbro<br>
+                    Champions League Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(90deg, #004D98 30%, #A50044 30% 70%, #FCBF49 70%); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF;">FCB</div>
+                        <div style="font-size: 1.2em; font-weight: bold; color: #FFF;">Barcelona</div>
+                    </div>
+                    <h3>FC Barcelona</h3>
+                    <p><strong>Season:</strong> 2008-09<br>
+                    <strong>Manufacturer:</strong> Nike<br>
+                    Treble Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #DC0000; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 2px solid #000;">
+                        <div style="font-size: 2.5em; font-weight: bold; color: #FFF;">MAN UTD</div>
+                        <div style="font-size: 1.2em; font-weight: bold; color: #FFD700;">Red Devils</div>
+                    </div>
+                    <h3>Manchester United</h3>
+                    <p><strong>Season:</strong> 1998-99<br>
+                    <strong>Manufacturer:</strong> Umbro<br>
+                    Treble Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #FFD700;">
+                        <div style="font-size: 3em; font-weight: bold; color: #00529F;">REAL</div>
+                        <div style="font-size: 1.5em; font-weight: bold; color: #00529F;">MADRID</div>
+                    </div>
+                    <h3>Real Madrid</h3>
+                    <p><strong>Season:</strong> 2001-02<br>
+                    <strong>Manufacturer:</strong> Adidas<br>
+                    Champions League Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #DC0714; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 2px solid #00A398;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF;">LFC</div>
+                        <div style="font-size: 1.2em; font-weight: bold; color: #FFD700;">You'll Never Walk Alone</div>
+                    </div>
+                    <h3>Liverpool FC</h3>
+                    <p><strong>Season:</strong> 2004-05<br>
+                    <strong>Manufacturer:</strong> Reebok<br>
+                    Champions League Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(180deg, #FB090B 50%, #000000 50%); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 3em; font-weight: bold; color: #FFF; text-shadow: 2px 2px 4px #000;">AC</div>
+                        <div style="font-size: 1.5em; font-weight: bold; color: #FFF; text-shadow: 2px 2px 4px #000;">MILAN</div>
+                    </div>
+                    <h3>AC Milan</h3>
+                    <p><strong>Season:</strong> 2006-07<br>
+                    <strong>Manufacturer:</strong> Adidas<br>
+                    Champions League Winners</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>International Teams - World Cup Legends</h2>
+            <div class="jersey-grid">
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(135deg, #009B3A 0%, #FEDD00 100%); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 4em;">🇧🇷</div>
+                        <div style="font-size: 1.8em; font-weight: bold; color: #009B3A; text-shadow: 1px 1px 2px #FFF;">BRASIL</div>
+                    </div>
+                    <h3>🇧🇷 Brazil</h3>
+                    <p><strong>Tournament:</strong> 2002 World Cup<br>
+                    <strong>Manufacturer:</strong> Nike<br>
+                    5-time World Cup Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(0deg, #000000 33%, #DD0000 33% 66%, #FFCE00 66%); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 4em;">🇩🇪</div>
+                        <div style="font-size: 1.8em; font-weight: bold; color: #FFF; text-shadow: 2px 2px 4px #000;">DEUTSCHLAND</div>
+                    </div>
+                    <h3>🇩🇪 Germany</h3>
+                    <p><strong>Tournament:</strong> 2014 World Cup<br>
+                    <strong>Manufacturer:</strong> Adidas<br>
+                    4-time World Cup Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(0deg, #74ACDF 50%, #FFFFFF 50%); display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #74ACDF;">
+                        <div style="font-size: 4em;">🇦🇷</div>
+                        <div style="font-size: 1.6em; font-weight: bold; color: #74ACDF; text-shadow: 1px 1px 2px #000;">ARGENTINA</div>
+                    </div>
+                    <h3>🇦🇷 Argentina</h3>
+                    <p><strong>Tournament:</strong> 2022 World Cup<br>
+                    <strong>Manufacturer:</strong> Adidas<br>
+                    3-time World Cup Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: linear-gradient(90deg, #002395 33%, #FFFFFF 33% 66%, #ED2939 66%); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                        <div style="font-size: 4em;">🇫🇷</div>
+                        <div style="font-size: 1.8em; font-weight: bold; color: #002395; text-shadow: 1px 1px 2px #FFF;">FRANCE</div>
+                    </div>
+                    <h3>🇫🇷 France</h3>
+                    <p><strong>Tournament:</strong> 2018 World Cup<br>
+                    <strong>Manufacturer:</strong> Nike<br>
+                    2-time World Cup Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #009246; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #CE2B37;">
+                        <div style="font-size: 4em;">🇮🇹</div>
+                        <div style="font-size: 1.8em; font-weight: bold; color: #FFFFFF; text-shadow: 2px 2px 4px #000;">ITALIA</div>
+                    </div>
+                    <h3>🇮🇹 Italy</h3>
+                    <p><strong>Tournament:</strong> 2006 World Cup<br>
+                    <strong>Manufacturer:</strong> Puma<br>
+                    4-time World Cup Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #AA151B; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #F1BF00;">
+                        <div style="font-size: 4em;">🇪🇸</div>
+                        <div style="font-size: 1.8em; font-weight: bold; color: #F1BF00;">ESPAÑA</div>
+                    </div>
+                    <h3>🇪🇸 Spain</h3>
+                    <p><strong>Tournament:</strong> 2010 World Cup<br>
+                    <strong>Manufacturer:</strong> Adidas<br>
+                    World Cup Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #012169;">
+                        <div style="font-size: 4em;">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+                        <div style="font-size: 1.8em; font-weight: bold; color: #012169;">ENGLAND</div>
+                    </div>
+                    <h3>🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</h3>
+                    <p><strong>Tournament:</strong> 1966 World Cup<br>
+                    <strong>Manufacturer:</strong> Umbro<br>
+                    World Cup Winners</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #FF4F00; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #FFFFFF;">
+                        <div style="font-size: 4em;">🇳🇱</div>
+                        <div style="font-size: 1.6em; font-weight: bold; color: #FFFFFF; text-shadow: 2px 2px 4px #000;">NEDERLAND</div>
+                    </div>
+                    <h3>🇳🇱 Netherlands</h3>
+                    <p><strong>Tournament:</strong> 1988 Euro<br>
+                    <strong>Manufacturer:</strong> Adidas<br>
+                    Total Football Legends</p>
+                </div>
+                <div class="jersey-card">
+                    <div style="width: 100%; height: 200px; border-radius: 8px; margin-bottom: 1rem; background: #FF0000; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 3px solid #006600;">
+                        <div style="font-size: 4em;">🇵🇹</div>
+                        <div style="font-size: 1.6em; font-weight: bold; color: #FFFFFF; text-shadow: 2px 2px 4px #000;">PORTUGAL</div>
+                    </div>
+                    <h3>🇵🇹 Portugal</h3>
+                    <p><strong>Tournament:</strong> 2016 Euro<br>
+                    <strong>Manufacturer:</strong> Nike<br>
+                    European Champions</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>About This Project</h2>
+            <p>This Football Jersey Showcase Platform is designed to celebrate the rich history and artistic evolution of football kits. From classic designs that defined generations to modern innovations in sportswear technology, each jersey tells a unique story.</p>
+            
+            <div class="features">
+                <div class="feature-box">
+                    <h3>📚 Historical Archive</h3>
+                    <p>Explore jerseys spanning multiple decades of football history</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🎨 Design Analysis</h3>
+                    <p>Understand the artistry and cultural significance behind each kit</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🌍 Global Coverage</h3>
+                    <p>Featuring clubs and national teams from around the world</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Technical Implementation</h2>
+            <p><strong>Server Infrastructure:</strong> This website is deployed on Microsoft Azure using Infrastructure as a Service (IaaS). The server runs on a Linux environment with Nginx web server, secured with SSL/TLS encryption via Let's Encrypt.</p>
+            <p><strong>Technology Stack:</strong> Static HTML5, CSS3, and JavaScript ensure fast loading times and optimal performance across all devices.</p>
+            <p><strong>Security:</strong> Implemented with HTTPS, regular security updates, and firewall protection to ensure safe browsing experience.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-info">
+            <p><strong>Football Jersey Showcase Platform</strong></p>
+            <p>ICT171 Assignment 3 - Cloud Server Project</p>
+            <p>Student: Parthiv (ID: 35859257)</p>
+            <p>Server IP: 20.233.33.117</p>
+        </div>
+        <p>&copy; 2025 Football Jersey Showcase. Licensed under MIT License.</p>
+    </footer>
+</body>
+</html>
